@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '0.7-SNAPSHOT'
+	id 'fabric-loom' version '0.12-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -18,6 +18,9 @@ repositories {
 	// for more information about repositories.
 	flatDir {
 		dirs "./lib"
+	}
+	maven {
+		url 'https://jitpack.io'
 	}
 }
 
@@ -40,7 +43,9 @@ dependencies {
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
-	modImplementation urlFile("https://github.com/cabaletta/baritone/releases/download/v1.6.3/baritone-api-fabric-1.6.3.jar", 'baritone', '1.16.5-1.6.3')
+	modImplementation "com.github.wagyourtail.baritone:baritone-fabric:fcd20b10f1"
+	// it's not out yet, and the jitpack maven only has unoptimized version, also, including baritone is not recommended.
+	//	include urlFile("https://github.com/cabaletta/baritone/releases/download/v1.9.0/baritone-fabric-api-1.9.0.jar", 'baritone', '1.19-1.9.0')
 
 	// PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
 	// You may need to force-disable transitiveness on them.
